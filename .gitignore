@@ -8,3 +8,6 @@ deployment/*.exe
 deployment/*-src
 working/*.log
 working/*.irr
+
+gen
+obj
