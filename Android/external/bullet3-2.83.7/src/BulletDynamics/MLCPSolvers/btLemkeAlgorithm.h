@@ -27,7 +27,7 @@ subject to the following restrictions:
 #include "LinearMath/btMatrixX.h"
 
 
-#include <vector> //todo: replace by btAlignedObjectArray
+//#include <vector> //todo: replace by btAlignedObjectArray
 
 class btLemkeAlgorithm
 {
