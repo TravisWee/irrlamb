@@ -20,7 +20,8 @@ SRC_XML_LIST := $(subst $(LOCAL_PATH)/, , $(wildcard $(PROJECT_SRC_DIR)/tinyxml/
 include $(CLEAR_VARS)
 LOCAL_MODULE := Irrlamb
 
-LOCAL_CFLAGS := -Wall -pipe -fno-exceptions -fno-rtti -fstrict-aliasing \
+LOCAL_CFLAGS := -D_ANDROID \
+				-Wall -pipe -fno-exceptions -fno-rtti -fstrict-aliasing \
 				-Wno-deprecated-declarations -pedantic -std=c++11
 				
 
@@ -33,7 +34,6 @@ LOCAL_C_INCLUDES += $(PROJECT_SRC_DIR)/tinyxml
 
 # TODO: to be removed if LOCAL_EXPORT_C_INCLUDE_DIRS works
 LOCAL_C_INCLUDES += $(EXTRA_PROJECT_PATH)/Irrlicht/include
-LOCAL_C_INCLUDES += $(EXTRA_PROJECT_PATH)/bullet3-2.83.7/src
 LOCAL_C_INCLUDES += $(EXTRA_PROJECT_PATH)/lua-5.3.3/include
 LOCAL_C_INCLUDES += $(EXTRA_PROJECT_PATH)/bullet3/include
 
