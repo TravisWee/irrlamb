@@ -33,6 +33,8 @@ LOCAL_STATIC_LIBRARIES := libogg
 
 LOCAL_SDK_VERSION := 14
 
+LOCAL_EXPORT_C_INCLUDES := $(LOCAL_PATH)/include
+
 include $(BUILD_STATIC_LIBRARY)
 
 $(call import-module, libogg)

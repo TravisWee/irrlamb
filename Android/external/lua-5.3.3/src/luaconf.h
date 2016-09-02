@@ -655,7 +655,7 @@
 */
 #if !defined(lua_getlocaledecpoint)
 #if _ANDROID_PLATFORM_
-	#define getlocaledecpoint() ('.')
+	#define lua_getlocaledecpoint() ('.')
 #else
 	#define lua_getlocaledecpoint()		(localeconv()->decimal_point[0])
 #endif

@@ -17,6 +17,8 @@
 *******************************************************************************/
 #pragma once
 
+#define GAME_VERSION "0.2.2"
+
 // Constants
 const float PHYSICS_TIMESTEP = 1.0f / 100.0f;
 const float SLEEP_RATE = 1.0f / 180.0f;

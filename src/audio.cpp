@@ -142,7 +142,7 @@ bool _Audio::LoadBuffer(const std::string &File) {
 
 	// Open vorbis stream
 	OggVorbis_File VorbisStream;
-	int ReturnCode = ov_fopen(Path.c_str(), &VorbisStream);
+	int ReturnCode = ov_fopen(const_cast<char*>(Path.c_str()), &VorbisStream);
 	if(ReturnCode != 0) {
 		Log.Write("_Audio::LoadBuffer - ov_fopen failed on file %s with code %d", Path.c_str(), ReturnCode);
 		return false;
