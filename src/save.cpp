@@ -30,7 +30,16 @@
 _Save Save;
 
 // Initializes the save system
-int _Save::Init() {
+int _Save::Init(const std::string &Path) {
+	if (Path.c_str() != NULL) {
+	#ifdef __ANDROID__
+		SavePath = Path;
+		SavePath += "share/";
+		mkdir(SavePath.c_str(), 0755);
+		SavePath += "irrlamb/";
+		mkdir(SavePath.c_str(), 0755);
+	#endif
+	} else {
 
 	#ifdef _WIN32
 		SavePath = std::string(getenv("APPDATA")) + "/irrlamb/";
@@ -43,7 +52,7 @@ int _Save::Init() {
 		SavePath += "irrlamb/";
 		mkdir(SavePath.c_str(), 0755);
 	#endif
-
+	}
 	ReplayPath = SavePath + std::string("replays/");
 	ScreenshotsPath = SavePath + std::string("screenshots/");
 	CustomLevelsPath = SavePath + std::string("customlevels/");

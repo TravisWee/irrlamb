@@ -55,7 +55,7 @@ class _Save {
 
 	public:
 
-		int Init();
+		int Init(const std::string &Path);
 		int Close();
 
 		int InitStatsDatabase();

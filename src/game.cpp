@@ -63,6 +63,7 @@ int _Game::Init(int Count, char **Arguments) {
 	// Process arguments
 	std::string Token;
 	int TokensRemaining;
+	std::string Path;
 	for(int i = 1; i < Count; i++) {
 		Token = std::string(Arguments[i]);
 		TokensRemaining = Count - i - 1;
@@ -77,10 +78,13 @@ int _Game::Init(int Count, char **Arguments) {
 		else if(Token == "-noaudio") {
 			AudioEnabled = false;
 		}
+		else if (Token == "-path" && TokensRemaining > 0) {
+			Path = std::string(Arguments[++i]);
+		}
 	}
 
 	// Set up the save system
-	if(!Save.Init())
+	if(!Save.Init(Path))
 		return 0;
 
 	// Initialize logging system

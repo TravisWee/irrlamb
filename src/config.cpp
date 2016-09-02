@@ -21,6 +21,10 @@
 #include <save.h>
 #include <input.h>
 
+#ifdef __ANDROID__
+#include <android/native_window.h>
+#endif
+
 using namespace irr;
 
 _Config Config;
@@ -46,8 +50,6 @@ void _Config::Reset() {
 
 	// Video
 	DriverType = video::EDT_OPENGL;
-	ScreenWidth = 800;
-	ScreenHeight = 600;
 	Fullscreen = false;
 	Shadows = true;
 	Shaders = true;
@@ -83,6 +85,16 @@ void _Config::Reset() {
 	MouseScaleX = 5.0f;
 	MouseScaleY = 5.0f;
 #endif
+#ifdef __ANDROID__
+	DriverType = video::EDT_OGLES2;
+	ANativeWindow* NativeWindow = static_cast<ANativeWindow*>(
+		irrDevice->getVideoDriver()->getExposedVideoData().OGLESAndroid.Window);
+	ScreenWidth = ANativeWindow_getWidth(NativeWindow);
+	ScreenHeight = ANativeWindow_getHeight(NativeWindow);
+	Fullscreen = true;
+	Vsync = true;
+#endif
+
 }
 
 // Add default actions
